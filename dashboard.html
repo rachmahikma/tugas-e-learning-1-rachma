@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Turnamen Voli</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Body Background */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* Blue and Yellow Theme Colors */
+        .navbar {
+            background-color: #0056b3; /* Deep Blue Navbar */
+        }
+
+        .navbar-brand {
+            color: #ffcc00 !important; /* Yellow Brand Text */
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important; /* White text in Navbar */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00 !important; /* Yellow text on hover */
+        }
+
+        /* Header Section */
+        .blog-header {
+            background-color: #ffcc00; /* Yellow Header Background */
+            padding: 40px 0;
+            color: #0056b3; /* Blue Text */
+        }
+
+        /* Card Styling */
+        .post-card {
+            border: 1px solid #0056b3; /* Blue border */
+        }
+
+        .post-card .card-title {
+            color: #0056b3; /* Blue Titles */
+        }
+
+        .post-card .btn-primary {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .post-card .btn-primary:hover {
+            background-color: #004494; /* Darker Blue Hover */
+            border-color: #004494;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0056b3;
+        }
+
+        .footer p {
+            color: #ffcc00;
+        }
+    </style>
+    <script>
+        function checkLogin() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const username = localStorage.getItem('loggedInUser');
+            
+            if (!isLoggedIn || isLoggedIn !== 'true') {
+                // Redirect to login page if not logged in
+                window.location.href = 'login.html';
+            } else {
+                // Display the logged-in user's name
+                document.getElementById('username').textContent = username;
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('loggedInUser');
+            alert('You have been logged out');
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body onload="checkLogin()">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Turnamen Voli</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Artikel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kontak</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-danger text-white" href="javascript:void(0);" onclick="logout();">Keluar</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container text-center">
+            <h1>Selamat Datang, <span id="username">[Nama Pengguna]</span></h1>
+            <p>Kelola pendaftaran dan informasi turnamen voli Anda di sini.</p>
+        </div>
+    </header>
+
+    <!-- Blog Section -->
+    <div class="container blog-section mt-4">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card post-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Turnamen Voli Lokal</h5>
+                        <p class="card-text">Turnamen voli lokal kembali digelar! Ayo daftarkan tim Anda sekarang juga untuk mengikuti kompetisi ini.</p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card post-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tips Menjadi Pemain Voli Profesional</h5>
+                        <p class="card-text">Ingin menjadi pemain voli profesional? Baca artikel kami tentang tips dan trik untuk meningkatkan keterampilan Anda.</p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card post-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Latihan Terbaik untuk Tim Voli</h5>
+                        <p class="card-text">Latihan adalah kunci kesuksesan! Temukan latihan terbaik yang bisa dilakukan tim voli Anda di sini.</p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer text-center py-3">
+        <p>&copy; 2024 Turnamen Voli. Semua Hak Dilindungi.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

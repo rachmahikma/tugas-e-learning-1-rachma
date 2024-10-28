@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Turnamen Voli</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+    <script>
+        function loginUser(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
+
+            // Basic validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Check if the user is registered and credentials are correct
+            if (registeredUser && registeredUser.email === email && registeredUser.password === password) {
+                alert('Login successful!');
+                // Save login status
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('loggedInUser', registeredUser.username);
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Invalid email or password');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Login - Turnamen Voli</h2>
+        <form onsubmit="loginUser(event)">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <div class="text-center mt-3">
+            <p>Don't have an account? <a href="index.html">Register here</a></p>
+        </div>
+    </div>
+</body>
+</html>
